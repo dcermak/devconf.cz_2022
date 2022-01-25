@@ -1,0 +1,12 @@
+{
+  "name": "devconf.cz_2022",
+  "version": "0.1.0",
+  "description": "Slides of my talk about openQA held at DevConf.cz 2022",
+  "author": "Dan Čermák <dan.cermak@cgc-instruments.com>",
+  "license": "CC-BY-SA-4.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.4",
+    "reveal.js": "^4.2.1"
+  }
+}
