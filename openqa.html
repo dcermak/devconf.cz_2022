@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>openQA</title>
+<meta name="author" content="(Dan Čermák)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="./node_modules/reveal.js/dist/theme/simple.css" id="theme"/>
+
+<link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css"/>
+<link rel="stylesheet" href="./node_modules/reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = './node_modules/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h2 class="title"><img src="./media/openqa_logo.svg" height="100px" style="margin-bottom:-20px"/> openQA</h2>
+<p class="subtitle" style="color: Gray;">Testing Linux Distributions and Appliances</p>
+<p class="author">Dan Čermák</p>
+<img src="./media/devconf-cz-bw.svg" height="50px"/>
+<p class="date">29.1.2022</p>
+<p xmlns:dct="http://purl.org/dc/terms/" xmlns:cc="http://creativecommons.org/ns#"><a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-commons-by"></i></a></p>
+</section>
+
+
+<section>
+<section id="slide-org84749a8">
+<h2 id="org84749a8">who -u</h2>
+<p>
+Dan Čermák
+</p>
+
+<p style="text-align:left">
+<ul>
+<li style="list-style-type:none;"><i class="fab fa-suse"></i> Software Developer @SUSE
+<li style="list-style-type:none;"><i class="fab fa-fedora"></i> i3 SIG, Package maintainer
+<li style="list-style-type:none;"><i class="far fa-heart"></i> developer tools, testing and documentation</li>
+<li style="list-style-type:none;">&nbsp</li>
+<li style="list-style-type:none;"><i class="fab fa-github"></i> <a href="https://github.com/D4N/">D4N</a> / <a href="https://github.com/dcermak/">dcermak</a></li>
+<li style="list-style-type:none;"><i class="fab fa-mastodon"></i> <a href="https://mastodon.social/@Defolos">@Defolos@mastodon.social</a></li>
+<li style="list-style-type:none;"><i class="fab fa-twitter"></i> <a href="https://twitter.com/DefolosDC/">@DefolosDC</a></li>
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgc90b5fe">
+<h2 id="orgc90b5fe">Agenda</h2>
+<ul>
+<li><a href="#/slide-org81b08c4">What is openQA?</a></li>
+<li><a href="#/slide-org563cf24">openQA in the Wild</a></li>
+<li><a href="#/slide-org7d1c44a">Questions?</a></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org81b08c4">
+<h2 id="org81b08c4">What is openQA?</h2>
+<aside class="notes">
+<ul>
+<li>web frontend, actually whole framework to test a SUT</li>
+<li>tests are SUT centric, not application/library centric!</li>
+
+<li>automates user input (key presses, mouse movement)</li>
+<li>grab video feed from SUT &rarr; image recognition via OpenCV</li>
+<li>operating system agnostic</li>
+
+</ul>
+
+</aside>
+
+<ul>
+<li class="fragment appear">a web application</li>
+<li class="fragment appear">automated test framework for a SUT</li>
+
+<li class="fragment appear">simulate user input</li>
+<li class="fragment appear">match video feed using OpenCV</li>
+
+</ul>
+
+
+</section>
+<section id="slide-org9467253">
+<h3 id="org9467253">Sales Pitch</h3>
+<aside class="notes">
+<p>
+Why should you all care?
+</p>
+<ul>
+<li>automates user input &rarr; auto test appliance</li>
+<li>can run tests on nearly any&trade; hardware (with limitations)</li>
+<li>tagging &amp; labeling according to regexes,
+carry over of attached bug reports,
+various failure states
+&rArr; use for reviews of a full test suite run</li>
+
+</ul>
+
+</aside>
+
+<p>
+Why should I use openQA?
+</p>
+<ul>
+<li class="fragment appear">automate manual system level testing</li>
+<li class="fragment appear"><i class="fas fa-users"></i> user-centric testing</li>
+<li class="fragment appear">runs on bare metal</li>
+<li class="fragment appear">test labeling: <i class="fas fa-tags"></i>, <i class="fas fa-bug"></i> and reviews</li>
+<li class="fragment appear">battle tested (used at  <i class="fab fa-suse"></i>, <i class="fab fa-fedora"></i>, <i class="fab fa-redhat"></i>, …)</li>
+
+</ul>
+
+
+</section>
+<section id="slide-orgad3c07b">
+<h3 id="orgad3c07b">Architecture</h3>
+<aside class="notes">
+<ul>
+<li>openQA runs web app &amp; REST API (&rarr; for client libraries)
+schedules tests, stores test results &amp; artifacts</li>
+<li>individual tests dispatched to workers (can be other machine or the same)</li>
+<li>worker spawns <code>os-autoinst</code> on SUT (usually qemu, can be bare metal or other virt)</li>
+<li><code>os-autoinst</code> does heavy lifting: issue input, record output, match images</li>
+<li><code>os-autoinst</code> communicates via serial line by default (can be "upgraded" later on)</li>
+<li>image matching is <b>not</b> mandatory, works without it!</li>
+
+</ul>
+
+</aside>
+
+<img src="./media/openqa_architecture.svg" height="500px"/>
+
+
+</section>
+<section id="slide-org54c3021">
+<h3 id="org54c3021">Web UI</h3>
+<p>
+<img src="./media/screenshot_openqa_webui.png"/>
+</p>
+
+</section>
+<section id="slide-org54c3021-split">
+
+<p>
+<video height="600" controls><source src="media/openqa.mp4" type="video/mp4"></video>
+</p>
+
+</section>
+<section id="slide-orgf81f457">
+<h3 id="orgf81f457">Image Recognition</h3>
+<aside class="notes">
+<p>
+this is a <b>feature</b>, can run openQA without
+</p>
+
+<p>
+video matched via <b>needles</b>:
+</p>
+<ul>
+<li>json &amp; png with areas &amp; similarity level</li>
+<li>needles specify tags (used by testapi &rarr; needles matched by tag, not by filename)</li>
+<li><code>isotovideo</code> matches needles against video feed received via VNC</li>
+<li>areas matched needn't be in same position w.r.t each other</li>
+<li>matching occurs about once per sec</li>
+
+</ul>
+
+</aside>
+
+<p>
+<img src="./media/openqa_needle_view.png" height="500px"/>
+</p>
+
+
+</section>
+<section id="slide-orge795370">
+<h3 id="orge795370">Features</h3>
+<aside class="notes">
+<ul>
+<li>test results can be collected &amp; uploaded (e.g. VM disk or files)</li>
+<li>tests can depend on each other &rarr; are scheduled accordingly &amp; displayed in the webUI</li>
+<li>full workflows can be tagged, reviewed</li>
+<li>attach labels for bugs/features/issues to tests via comments</li>
+<li>test groups that run "scenarios" (= test with additional parameters)</li>
+<li>plethora of backends besides qemu: ipmi, x3270 (for s390), bare metal</li>
+
+</ul>
+
+</aside>
+
+<ul>
+<li class="fragment appear"><i class="far fa-hdd"></i> produce test artifacts &amp; handle assets</li>
+<li class="fragment appear"><i class="fas fa-code-branch"></i> dependency between tests &amp; scheduling</li>
+<li class="fragment appear"><i class="fas fa-tags"></i> tag &amp; review workflows and tests</li>
+<li class="fragment appear"><i class="fas fa-layer-group"></i> test grouping</li>
+<li class="fragment appear">support qemu/libvirt, ipmi, bare metal, x3270</li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org563cf24">
+<h2 id="org563cf24">openQA in the Wild</h2>
+<div class="outline-text-2" id="text-org563cf24">
+</div>
+</section>
+<section id="slide-orgb977156">
+<h3 id="orgb977156">openSUSE</h3>
+<aside class="notes">
+<ul>
+<li>each Tumbleweed snapshot or staging project is copied by a bot to <code>o3</code>
+&rarr; bot triggers a test run on <code>o3</code> and reports back on <code>OBS</code></li>
+<li>all new Leap snapshots get tested in <a href="https://openqa.opensuse.org/">o3</a></li>
+<li>testing on bare metal</li>
+<li>used extensively for SLE testing as well</li>
+
+</ul>
+
+</aside>
+
+<p>
+ <img src="./media/opensuse_release_tools-workflow-overview.svg"/>
+</p>
+
+</section>
+<section id="slide-orgb977156-split">
+
+<p>
+ <img src="./media/opensuse_release_tools-workflow_overview-highlight.svg"/>
+</p>
+
+</section>
+<section id="slide-orgb977156-split">
+
+<p>
+ <img src="./media/obs_staging_openqa_report.png"/>
+</p>
+
+</section>
+<section id="slide-org34dd9a1">
+<h4 id="org34dd9a1">Testing Strategy</h4>
+<aside class="notes">
+<ol>
+<li>create bootable disks &rarr; save as artifacts</li>
+<li>run tests on disk or create another disk + 3rd stage</li>
+
+</ol>
+
+</aside>
+
+<p>
+ <img src="./media/gnome_test_dependencies.png"/>
+</p>
+
+
+</section>
+<section id="slide-org9ad9101">
+<h3 id="org9ad9101">Fedora</h3>
+<aside class="notes">
+<ul>
+<li>successful compose automatically triggers a test run on openqa
+&rarr; test results get emailed to devel</li>
+<li>bodhi runs openqa tests for critpath updates</li>
+
+</ul>
+
+</aside>
+
+<p>
+ <img src="./media/Fedora_release_process.svg" height="400"/>
+</p>
+
+</section>
+<section id="slide-org9ad9101-split">
+
+<p>
+ <img src="./media/bodhi_kernel_openqa.png" height="400"/>
+</p>
+
+</section>
+<section id="slide-org075c1b9">
+<h3 id="org075c1b9"><span class="todo TODO">TODO</span> Kiwi Image Builder</h3>
+<p>
+ <img src="./media/kiwi_testing.svg" height="500"/>
+</p>
+
+</section>
+<section id="slide-org951be0e">
+<h3 id="org951be0e">Bare Metal Testing on the RPi</h3>
+<aside class="notes">
+<ul>
+<li>have to power cycle the Pi (&rarr; e.g. Kasa wifi plug or PoE)</li>
+<li>need to reflash the image (&rarr; USB-SD-Mux from Linux Automation GmbH)</li>
+
+</ul>
+
+<p>
+workflow:
+</p>
+<ol>
+<li>worker (can be any machine) uploads new image to SD card</li>
+<li>power cycle the Pi</li>
+<li>connect via serial line</li>
+<li>login &amp; setup ssh connection for vnc</li>
+<li>run tests &rarr; <b>PROFIT!</b></li>
+
+</ol>
+
+<p>
+on failure:
+</p>
+<ul>
+<li>try to shutdown via serial line</li>
+<li>turn pi off forcefully</li>
+
+</ul>
+
+<p>
+future additions:
+</p>
+<ul>
+<li>test HDMI output too</li>
+
+</ul>
+
+</aside>
+
+<img src="./media/rpi_testing.svg" height="500px"/>
+
+</section>
+<section id="slide-org951be0e-split">
+
+<img src="./media/20210216_160449.jpg" height="600px"/>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org0dcd78c">
+<h2 id="org0dcd78c">Recent development</h2>
+<aside class="notes">
+nil
+</aside>
+
+<p>
+<i class="fas fa-laptop-code"> </i> Bare Metal Testing
+</p>
+
+<p class="fragment (appear)">
+<img src="./media/openqa.qubes-os.org_bare_metal.png" height="400px"/>
+</p>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org156c0b2">
+<h2 id="org156c0b2">Get in Touch</h2>
+<ul>
+<li>on irc.libera.chat: <a href="irc:#opensuse-factory:irc.libera.chat">#opensuse-factory</a></li>
+<li>on matrix: <a href="https://matrix.to/#/%23openqa:opensuse.org">#openqa:opensuse.org</a> and <a href="https://matrix.to/#/%23quality:fedoraproject.org">#quality:fedoraproject.org</a></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org3bf6ed2">
+<h2 id="org3bf6ed2">Links</h2>
+<ul>
+<li>source code:  <i class="fab fa-github"></i> <a href="https://github.com/os-autoinst/">os-autoinst</a></li>
+<li><a href="https://open.qa">openQA Homepage</a></li>
+<li><a href="https://openqa.opensuse.org">openSUSE's instance</a></li>
+<li><a href="https://openqa.fedoraproject.org">Fedora's instance</a></li>
+<li><a href="https://openqa.qubes-os.org">QubesOS' instance</a></li>
+<li>slides:  <i class="fab fa-github"></i> <a href="https://github.com/dcermak/devconf.cz_2022"><code>dcermak/devconf.cz_2022</code></a></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-orgbdc9267">
+<h2 id="orgbdc9267"><span class="todo TODO">TODO</span> Legal</h2>
+<ul>
+<li>GPL-2.0-or-later: <a href="https://raw.githubusercontent.com/os-autoinst/openQA/master/assets/images/logo.svg">openQA Logo</a>, <a href="https://raw.githubusercontent.com/openSUSE/open-build-service/master/docs/obs-logo.svg">OBS Logo</a>, <a href="https://raw.githubusercontent.com/fedora-infra/bodhi/develop/bodhi/server/static/img/bodhi-logo.svg">Bodhi Logo</a>, <a href="https://raw.githubusercontent.com/openSUSE/openSUSE-release-tools/master/docs/res/workflow-overview.svg">openSUSE Release Process</a></li>
+<li>MIT: <a href="https://revealjs.com/">reveal.js</a>, <a href="https://eos-icons.com/">EOS Icons</a></li>
+<li>GPL-3.0-or-later or GPL-3.0: <a href="https://raw.githubusercontent.com/devconfcz/devconf/master/assets/media/logo/devconf-cz/devconf-cz-bw.svg">DevConf CZ Logo</a></li>
+<li>GPL-3.0-or-later: <a href="https://raw.githubusercontent.com/OSInside/kiwi/master/doc/source/.images/kiwi-logo.png">KIWI Logo</a></li>
+<li>CC-BY-4.0 and SIL OFL 1.1 and MIT: <a href="https://fontawesome.com/">Font Awesome</a></li>
+<li>CC-BY-SA-3.0: <a href="https://git-scm.com/downloads/logos">Git Logo</a></li>
+<li><a href="https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg">Raspberry Pi Logo</a> &copy; and &trade; of the Raspberry Pi Foundation</li>
+<li><a href="https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_black.svg">OpenCV Logo</a> &copy; OpenCV</li>
+<li>RPi testing photo by <a href="https://twitter.com/GardetGuillaume">Guillaume Gardet</a></li>
+
+</ul>
+
+
+</section>
+</section>
+<section>
+<section id="slide-org7d1c44a">
+<h2 id="org7d1c44a">Questions?</h2>
+<p data-fragment-index="1" class="fragment appear">
+<b>Answers!</b>
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="./node_modules/reveal.js/dist/reveal.js"></script>
+<script src="./node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="./node_modules/reveal.js/plugin/notes/notes.js"></script>
+
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+plugins: [RevealHighlight, RevealNotes, history],
+transition: 'none', hash: true
+});
+
+</script>
+</body>
+</html>
