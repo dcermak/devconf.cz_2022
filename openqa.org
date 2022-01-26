@@ -198,6 +198,17 @@ video matched via *needles*:
 
 @@html: <img src="./media/kiwi_testing.svg" height="500"/>@@
 
+** Qubes OS
+
+#+BEGIN_NOTES
+#+END_NOTES
+
+@@html:<i class="fas fa-laptop-code"> </i>@@ [[https://github.com/marmarek/qubes-posts/blob/ac88592aecfee4f83a30f50c15c901a2db031955/2021-11-17-openqa.md][Bare Metal Testing]]
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/qubes_os_button.jpg" height="400px"/>@@
+
+
 ** Bare Metal Testing on the RPi
 
 #+begin_notes
@@ -224,18 +235,6 @@ future additions:
 #+REVEAL: split
 
 #+REVEAL_HTML: <img src="./media/20210216_160449.jpg" height="600px"/>
-
-
-* Recent development
-
-#+BEGIN_NOTES
-#+END_NOTES
-
-@@html:<i class="fas fa-laptop-code"> </i>@@ Bare Metal Testing
-
-# from: https://openqa.qubes-os.org/tests/28211
-#+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/openqa.qubes-os.org_bare_metal.png" height="400px"/>@@
 
 
 * Get in Touch
@@ -265,7 +264,7 @@ future additions:
 - [[https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg][Raspberry Pi Logo]] \copy and \trade of the Raspberry Pi Foundation
 - [[https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_black.svg][OpenCV Logo]] \copy OpenCV
 - RPi testing photo by [[https://twitter.com/GardetGuillaume][Guillaume Gardet]]
-
+- QubesOS Servo photo by [[https://blog.marmarek.net/about/][Marek Marczykowski-Górecki]]
 
 * Questions?
 
