@@ -157,6 +157,10 @@ video matched via *needles*:
 - all new Leap snapshots get tested in [[https://openqa.opensuse.org/][o3]]
 - testing on bare metal
 - used extensively for SLE testing as well
+
+testing strategy:
+1. create bootable disks \rarr save as artifacts
+2. run tests on disk or create another disk + 3rd stage
 #+end_notes
 
 @@html: <img src="./media/opensuse_release_tools-workflow-overview.svg"/>@@
@@ -168,15 +172,6 @@ video matched via *needles*:
 #+REVEAL: split
 
 @@html: <img src="./media/obs_staging_openqa_report.png"/>@@
-
-*** Testing Strategy
-
-#+begin_notes
-1. create bootable disks \rarr save as artifacts
-2. run tests on disk or create another disk + 3rd stage
-#+end_notes
-
-@@html: <img src="./media/gnome_test_dependencies.png"/>@@
 
 
 ** Fedora
