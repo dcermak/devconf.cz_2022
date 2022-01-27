@@ -197,17 +197,6 @@ testing strategy:
 @@html: <img src="./media/kiwi_testing.svg" height="500"/>@@
 
 
-** Qubes OS
-
-#+BEGIN_NOTES
-#+END_NOTES
-
-@@html:<i class="fas fa-laptop-code"> </i>@@ [[https://github.com/marmarek/qubes-posts/blob/ac88592aecfee4f83a30f50c15c901a2db031955/2021-11-17-openqa.md][Bare Metal Testing]]
-
-#+ATTR_REVEAL: :frag (appear)
-@@html:<img src="./media/qubes_os_button.jpg" height="400px"/>@@
-
-
 ** Bare Metal Testing on the RPi
 
 #+begin_notes
@@ -235,6 +224,16 @@ future additions:
 
 #+REVEAL_HTML: <img src="./media/20210216_160449.jpg" height="600px"/>
 
+
+** Qubes OS
+
+#+BEGIN_NOTES
+#+END_NOTES
+
+@@html:<i class="fas fa-laptop-code"> </i>@@ [[https://github.com/marmarek/qubes-posts/blob/ac88592aecfee4f83a30f50c15c901a2db031955/2021-11-17-openqa.md][Bare Metal Testing]]
+
+#+ATTR_REVEAL: :frag (appear)
+@@html:<img src="./media/qubes_os_button.jpg" height="400px"/>@@
 
 * Get in Touch
 
