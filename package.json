@@ -7,6 +7,7 @@
   "dependencies": {},
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "eos-icons": "^5.4.0",
     "reveal.js": "^4.2.1"
   }
 }
