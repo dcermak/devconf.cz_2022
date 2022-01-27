@@ -38,8 +38,8 @@ CC BY 4.0 <i class="fab fa-creative-commons"></i> <i class="fab fa-creative-comm
 
 
 <section>
-<section id="slide-org0cd5c08">
-<h2 id="org0cd5c08">who -u</h2>
+<section id="slide-org7d76350">
+<h2 id="org7d76350">who -u</h2>
 <p>
 Dan Čermák
 </p>
@@ -59,20 +59,20 @@ Dan Čermák
 </section>
 </section>
 <section>
-<section id="slide-orgf4ce409">
-<h2 id="orgf4ce409">Agenda</h2>
+<section id="slide-org502b9dd">
+<h2 id="org502b9dd">Agenda</h2>
 <ul>
-<li><a href="#/slide-orgbd1c917">What is openQA?</a></li>
-<li><a href="#/slide-org2ad072f">openQA in the Wild</a></li>
-<li><a href="#/slide-org1eb26db">Questions?</a></li>
+<li><a href="#/slide-org4df78ed">What is openQA?</a></li>
+<li><a href="#/slide-orgb633410">openQA in the Wild</a></li>
+<li><a href="#/slide-orgae046d5">Questions?</a></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgbd1c917">
-<h2 id="orgbd1c917">What is openQA?</h2>
+<section id="slide-org4df78ed">
+<h2 id="org4df78ed">What is openQA?</h2>
 <aside class="notes">
 <ul>
 <li>web frontend, actually whole framework to test a SUT</li>
@@ -97,8 +97,8 @@ Dan Čermák
 
 
 </section>
-<section id="slide-org94caae6">
-<h3 id="org94caae6">Sales Pitch</h3>
+<section id="slide-orgc98f52d">
+<h3 id="orgc98f52d">Sales Pitch</h3>
 <aside class="notes">
 <p>
 Why should you all care?
@@ -129,8 +129,8 @@ Why should I use openQA?
 
 
 </section>
-<section id="slide-org3582e76">
-<h3 id="org3582e76">Architecture</h3>
+<section id="slide-org85622c6">
+<h3 id="org85622c6">Architecture</h3>
 <aside class="notes">
 <ul>
 <li>openQA runs web app &amp; REST API (&rarr; for client libraries)
@@ -149,22 +149,22 @@ schedules tests, stores test results &amp; artifacts</li>
 
 
 </section>
-<section id="slide-org20e228e">
-<h3 id="org20e228e">Web UI</h3>
+<section id="slide-org81ddbae">
+<h3 id="org81ddbae">Web UI</h3>
 <p>
 <img src="./media/screenshot_openqa_webui.png"/>
 </p>
 
 </section>
-<section id="slide-org20e228e-split">
+<section id="slide-org81ddbae-split">
 
 <p>
 <video height="600" controls><source src="media/openqa.mp4" type="video/mp4"></video>
 </p>
 
 </section>
-<section id="slide-org19ce220">
-<h3 id="org19ce220">Image Recognition</h3>
+<section id="slide-org634e76b">
+<h3 id="org634e76b">Image Recognition</h3>
 <aside class="notes">
 <p>
 this is a <b>feature</b>, can run openQA without
@@ -190,8 +190,8 @@ video matched via <b>needles</b>:
 
 
 </section>
-<section id="slide-orgb804c79">
-<h3 id="orgb804c79">Features</h3>
+<section id="slide-orge543b5e">
+<h3 id="orge543b5e">Features</h3>
 <aside class="notes">
 <ul>
 <li>test results can be collected &amp; uploaded (e.g. VM disk or files)</li>
@@ -218,13 +218,13 @@ video matched via <b>needles</b>:
 </section>
 </section>
 <section>
-<section id="slide-org2ad072f">
-<h2 id="org2ad072f">openQA in the Wild</h2>
-<div class="outline-text-2" id="text-org2ad072f">
+<section id="slide-orgb633410">
+<h2 id="orgb633410">openQA in the Wild</h2>
+<div class="outline-text-2" id="text-orgb633410">
 </div>
 </section>
-<section id="slide-org16624f7">
-<h3 id="org16624f7">openSUSE</h3>
+<section id="slide-orga5494a2">
+<h3 id="orga5494a2">openSUSE</h3>
 <aside class="notes">
 <ul>
 <li>each Tumbleweed snapshot or staging project is copied by a bot to <code>o3</code>
@@ -251,14 +251,14 @@ testing strategy:
 </p>
 
 </section>
-<section id="slide-org16624f7-split">
+<section id="slide-orga5494a2-split">
 
 <p>
  <img src="./media/opensuse_release_tools-workflow_overview-highlight.svg"/>
 </p>
 
 </section>
-<section id="slide-org16624f7-split">
+<section id="slide-orga5494a2-split">
 
 <p>
  <img src="./media/obs_staging_openqa_report.png"/>
@@ -266,8 +266,8 @@ testing strategy:
 
 
 </section>
-<section id="slide-org473af72">
-<h3 id="org473af72">Fedora</h3>
+<section id="slide-orga394754">
+<h3 id="orga394754">Fedora</h3>
 <aside class="notes">
 <ul>
 <li>successful compose automatically triggers a test run on openqa
@@ -283,38 +283,33 @@ testing strategy:
 </p>
 
 </section>
-<section id="slide-org473af72-split">
+<section id="slide-orga394754-split">
 
 <p>
  <img src="./media/bodhi_kernel_openqa.png" height="400"/>
 </p>
 
 </section>
-<section id="slide-org320ed00">
-<h3 id="org320ed00"><span class="todo TODO">TODO</span> Kiwi Image Builder</h3>
+<section id="slide-orgb69e9cb">
+<h3 id="orgb69e9cb">Kiwi Image Builder</h3>
+<p>
+ <img src="./media/kiwi_no_testing.svg" height="500"/>
+</p>
+</section>
+<section id="slide-orgb69e9cb-split">
+<p>
+ <img src="./media/kiwi_build_testing.svg" height="500"/>
+</p>
+</section>
+<section id="slide-orgb69e9cb-split">
 <p>
  <img src="./media/kiwi_testing.svg" height="500"/>
 </p>
 
-</section>
-<section id="slide-orgf9bbda9">
-<h3 id="orgf9bbda9">Qubes OS</h3>
-<aside class="notes">
-nil
-</aside>
-
-<p>
-<i class="fas fa-laptop-code"> </i> <a href="https://github.com/marmarek/qubes-posts/blob/ac88592aecfee4f83a30f50c15c901a2db031955/2021-11-17-openqa.md">Bare Metal Testing</a>
-</p>
-
-<p class="fragment (appear)">
-<img src="./media/qubes_os_button.jpg" height="400px"/>
-</p>
-
 
 </section>
-<section id="slide-org9f4efe8">
-<h3 id="org9f4efe8">Bare Metal Testing on the RPi</h3>
+<section id="slide-org6a774e5">
+<h3 id="org6a774e5">Bare Metal Testing on the RPi</h3>
 <aside class="notes">
 <ul>
 <li>have to power cycle the Pi (&rarr; e.g. Kasa wifi plug or PoE)</li>
@@ -356,16 +351,31 @@ future additions:
 <img src="./media/rpi_testing.svg" height="500px"/>
 
 </section>
-<section id="slide-org9f4efe8-split">
+<section id="slide-org6a774e5-split">
 
 <img src="./media/20210216_160449.jpg" height="600px"/>
 
 
 </section>
+<section id="slide-orgdf833d1">
+<h3 id="orgdf833d1">Qubes OS</h3>
+<aside class="notes">
+nil
+</aside>
+
+<p>
+<i class="fas fa-laptop-code"> </i> <a href="https://github.com/marmarek/qubes-posts/blob/ac88592aecfee4f83a30f50c15c901a2db031955/2021-11-17-openqa.md">Bare Metal Testing</a>
+</p>
+
+<p class="fragment (appear)">
+<img src="./media/qubes_os_button.jpg" height="400px"/>
+</p>
+
+</section>
 </section>
 <section>
-<section id="slide-org6e16c87">
-<h2 id="org6e16c87">Get in Touch</h2>
+<section id="slide-org69577a9">
+<h2 id="org69577a9">Get in Touch</h2>
 <ul>
 <li>on irc.libera.chat: <a href="irc:#opensuse-factory:irc.libera.chat">#opensuse-factory</a></li>
 <li>on matrix: <a href="https://matrix.to/#/%23openqa:opensuse.org">#openqa:opensuse.org</a> and <a href="https://matrix.to/#/%23quality:fedoraproject.org">#quality:fedoraproject.org</a></li>
@@ -376,8 +386,8 @@ future additions:
 </section>
 </section>
 <section>
-<section id="slide-orga44857e">
-<h2 id="orga44857e">Links</h2>
+<section id="slide-orgd84662b">
+<h2 id="orgd84662b">Links</h2>
 <ul>
 <li>source code:  <i class="fab fa-github"></i> <a href="https://github.com/os-autoinst/">os-autoinst</a></li>
 <li><a href="https://open.qa">openQA Homepage</a></li>
@@ -392,8 +402,8 @@ future additions:
 </section>
 </section>
 <section>
-<section id="slide-org47b2bc6">
-<h2 id="org47b2bc6"><span class="todo TODO">TODO</span> Legal</h2>
+<section id="slide-org6da1bbe">
+<h2 id="org6da1bbe"><span class="todo TODO">TODO</span> Legal</h2>
 <ul>
 <li>GPL-2.0-or-later: <a href="https://raw.githubusercontent.com/os-autoinst/openQA/master/assets/images/logo.svg">openQA Logo</a>, <a href="https://raw.githubusercontent.com/openSUSE/open-build-service/master/docs/obs-logo.svg">OBS Logo</a>, <a href="https://raw.githubusercontent.com/fedora-infra/bodhi/develop/bodhi/server/static/img/bodhi-logo.svg">Bodhi Logo</a>, <a href="https://raw.githubusercontent.com/openSUSE/openSUSE-release-tools/master/docs/res/workflow-overview.svg">openSUSE Release Process</a></li>
 <li>MIT: <a href="https://revealjs.com/">reveal.js</a>, <a href="https://eos-icons.com/">EOS Icons</a></li>
@@ -411,8 +421,8 @@ future additions:
 </section>
 </section>
 <section>
-<section id="slide-org1eb26db">
-<h2 id="org1eb26db">Questions?</h2>
+<section id="slide-orgae046d5">
+<h2 id="orgae046d5">Questions?</h2>
 <p data-fragment-index="1" class="fragment appear">
 <b>Answers!</b>
 </p>
