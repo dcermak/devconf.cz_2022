@@ -1,0 +1,10 @@
+* Kiwi testing images legal notice
+
+The kiwi testing images [[file:./kiwi_build_testing.svg/][kiwi_build_testing.svg]], [[file:./kiwi_no_testing.svg/][kiwi_no_testing.svg]] and
+[[file:./kiwi_testing.svg/][kiwi_testing.svg]] contain the following icons from [[https://fontawesome.com/][Font Awesome]] licensed under
+CC-BY-SA 4.0:
+- [[https://fontawesome.com/v5.15/icons/vial?style=solid][vial]]
+- [[https://fontawesome.com/v5.15/icons/tag?style=solid][tag]]
+- [[https://fontawesome.com/v5.15/icons/compact-disc?style=solid][compact-disc]]
+- [[https://fontawesome.com/v5.15/icons/hdd?style=regular][hdd]]
+- [[https://fontawesome.com/v5.15/icons/user-friends?style=solid][user-friends]]

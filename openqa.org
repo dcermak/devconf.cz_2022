@@ -188,10 +188,14 @@ testing strategy:
 
 @@html: <img src="./media/bodhi_kernel_openqa.png" height="400"/>@@
 
-** TODO Kiwi Image Builder
-# Split this into several images
+** Kiwi Image Builder
 
+@@html: <img src="./media/kiwi_no_testing.svg" height="500"/>@@
+#+REVEAL: split
+@@html: <img src="./media/kiwi_build_testing.svg" height="500"/>@@
+#+REVEAL: split
 @@html: <img src="./media/kiwi_testing.svg" height="500"/>@@
+
 
 ** Qubes OS
 
