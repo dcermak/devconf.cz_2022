@@ -251,7 +251,12 @@ future additions:
 - slides: @@html: <i class="fab fa-github"></i>@@ [[https://github.com/dcermak/devconf.cz_2022][=dcermak/devconf.cz_2022=]]
 
 
-* TODO Legal
+* Questions?
+
+#+ATTR_REVEAL: :frag appear :frag_idx 1
+*Answers!*
+
+* Legal
 
 - GPL-2.0-or-later: [[https://raw.githubusercontent.com/os-autoinst/openQA/master/assets/images/logo.svg][openQA Logo]], [[https://raw.githubusercontent.com/openSUSE/open-build-service/master/docs/obs-logo.svg][OBS Logo]], [[https://raw.githubusercontent.com/fedora-infra/bodhi/develop/bodhi/server/static/img/bodhi-logo.svg][Bodhi Logo]], [[https://raw.githubusercontent.com/openSUSE/openSUSE-release-tools/master/docs/res/workflow-overview.svg][openSUSE Release Process]]
 - MIT: [[https://revealjs.com/][reveal.js]], [[https://eos-icons.com/][EOS Icons]]
@@ -263,8 +268,3 @@ future additions:
 - [[https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_black.svg][OpenCV Logo]] \copy OpenCV
 - RPi testing photo by [[https://twitter.com/GardetGuillaume][Guillaume Gardet]]
 - QubesOS Servo photo by [[https://blog.marmarek.net/about/][Marek Marczykowski-Górecki]]
-
-* Questions?
-
-#+ATTR_REVEAL: :frag appear :frag_idx 1
-*Answers!*
