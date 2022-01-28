@@ -8,3 +8,5 @@ CC-BY-SA 4.0:
 - [[https://fontawesome.com/v5.15/icons/compact-disc?style=solid][compact-disc]]
 - [[https://fontawesome.com/v5.15/icons/hdd?style=regular][hdd]]
 - [[https://fontawesome.com/v5.15/icons/user-friends?style=solid][user-friends]]
+
+Additionally, they include the [[https://git-scm.com/downloads/logos][Git Logo]] licensed under CC-BY-SA-3.0.
