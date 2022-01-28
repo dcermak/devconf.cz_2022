@@ -258,13 +258,14 @@ future additions:
 
 * Legal
 
+- [[https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg][Raspberry Pi Logo]] \copy and \trade of the Raspberry Pi Foundation
+- [[https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_black.svg][OpenCV Logo]] \copy OpenCV
+- [[https://shop.linux-automation.com/image/catalog/logo-linux-automation_oneline2.png][Linux Automation Logo]] \copy Linux Automation GmbH
 - GPL-2.0-or-later: [[https://raw.githubusercontent.com/os-autoinst/openQA/master/assets/images/logo.svg][openQA Logo]], [[https://raw.githubusercontent.com/openSUSE/open-build-service/master/docs/obs-logo.svg][OBS Logo]], [[https://raw.githubusercontent.com/fedora-infra/bodhi/develop/bodhi/server/static/img/bodhi-logo.svg][Bodhi Logo]], [[https://raw.githubusercontent.com/openSUSE/openSUSE-release-tools/master/docs/res/workflow-overview.svg][openSUSE Release Process]]
 - MIT: [[https://revealjs.com/][reveal.js]], [[https://eos-icons.com/][EOS Icons]]
 - GPL-3.0-or-later or GPL-3.0: [[https://raw.githubusercontent.com/devconfcz/devconf/master/assets/media/logo/devconf-cz/devconf-cz-bw.svg][DevConf CZ Logo]]
 - GPL-3.0-or-later: [[https://raw.githubusercontent.com/OSInside/kiwi/master/doc/source/.images/kiwi-logo.png][KIWI Logo]]
 - CC-BY-4.0 and SIL OFL 1.1 and MIT: [[https://fontawesome.com/][Font Awesome]]
 - CC-BY-SA-3.0: [[https://git-scm.com/downloads/logos][Git Logo]]
-- [[https://upload.wikimedia.org/wikipedia/en/c/cb/Raspberry_Pi_Logo.svg][Raspberry Pi Logo]] \copy and \trade of the Raspberry Pi Foundation
-- [[https://opencv.org/wp-content/uploads/2020/07/OpenCV_logo_black.svg][OpenCV Logo]] \copy OpenCV
 - RPi testing photo by [[https://twitter.com/GardetGuillaume][Guillaume Gardet]]
 - QubesOS Servo photo by [[https://blog.marmarek.net/about/][Marek Marczykowski-Górecki]]
